@@ -1,0 +1,7 @@
+python-dotenv==1.0.1
+spacy==3.5.0
+discord==2.3.2
+git+https://github.com/imayhaveborkedit/discord-ext-voice-recv@3398a4d9d2f646cfcd60f68e626cd750b759893f
+git+https://github.com/coqui-ai/TTS.git
+google-generativeai==0.8.3
+SpeechRecognition==3.11.0
