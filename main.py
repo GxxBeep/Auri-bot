@@ -38,9 +38,9 @@ class AuriMain(commands.Bot):
                         # Captura e exibe qualquer erro que ocorra durante o carregamento da extensão.
                         print(f"Erro ao carregar cogs.{f[:-3]}: {e}")
         print(f"\nExtensões carregadas: {x}")
-         
+
         try:
-            synced = await self.tree.sync(guild=discord.Object(id=1210623174673432626))  # Sincroniza os comandos do bot com o servidor Discord.
+            synced = await self.tree.sync()  # Sincroniza os comandos do bot com o servidor Discord.
             print(f"Sincronizado {len(synced)} comandos")
         except Exception as e:
             # Captura e exibe erros que possam ocorrer durante a sincronização.
