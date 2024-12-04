@@ -1,5 +1,4 @@
 import google.generativeai as gemini
-#import asyncio
 from dotenv import load_dotenv
 from os import getenv
 
@@ -8,6 +7,7 @@ load_dotenv()
 # TODO: Limitar tokens de saída
 class Gemini:
     def __init__(self):
+        # Configurando o gemini
         gemini.configure(api_key=getenv("GEMINI_API_KEY"))
         
         # Criando o modelo
@@ -21,23 +21,17 @@ class Gemini:
 
         # Configurando o modelo
         self.model = gemini.GenerativeModel(
-            model_name="gemini-1.5-flash",
-            generation_config=self.generation_config,
+            model_name="gemini-1.5-flash", # Definindo o modelo a ser utilizado
+            generation_config=self.generation_config, # Definindo a configuração do modelo
         )
 
-    # TODO: Remover comentário abaixo
-    """
-    def save_text(self, response):
-        with open('texto.txt', "w", encoding='utf-8') as file:
-            file.write(response.text)
-            file.close()
-        return
-    """
-
+    # Envia uma mensagem para o gemini
     def send(self, message):
+        # Inicia a conversa passando o history
         chat_session = self.model.start_chat(history=[]) # TODO: Definir history para definir o idioma da resposta em Português
-        response = chat_session.send_message(message)
-        #print(response.text)
-        #self.save_text(response)
+        # Envia a mensagem e recebe a resposta
+        response = chat_session.send_message(message) 
+        # Encode da resposta
         response_encode = response.text.encode('utf-8')
-        return response_encode.decode('utf-8')
+        # Retorna a resposta decodificada
+        return response_encode.decode('utf-8') 
